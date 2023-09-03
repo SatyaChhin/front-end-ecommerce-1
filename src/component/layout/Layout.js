@@ -28,12 +28,12 @@ export default function Layout() {
                             <li onClick = { () => clickLink('/category') }>
                                 <a><BiCategory/> TV & AV</a>
                             </li>
-                            {/* <li onClick = { () => clickLink('/customer') }>
+                            <li onClick = { () => clickLink('/customer') }>
                                 <a><BiUserCircle/> Customer</a>
                             </li>
-                            <li onClick = { () => clickLink('/dashboard') }>
-                                <a><RiDashboardLine/> dashboard</a>
-                            </li> */}
+                            <li onClick = { () => clickLink('/login') }>
+                                <a><RiDashboardLine/> Login</a>
+                            </li>
                         </ul>
                     </nav>
                 </Col>

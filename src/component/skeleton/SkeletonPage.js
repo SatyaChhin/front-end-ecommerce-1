@@ -4,7 +4,6 @@ class SkeletonPage extends Component {
     render() {
         return (
             <>
-
                 <div style={{ display: 'flex'}} className='skeleton'>
                     <Stack spacing={1} width={700}  >
                         <Skeleton  variant="rectangular" width={600} height={300} />
@@ -16,7 +15,6 @@ class SkeletonPage extends Component {
                         <Skeleton width="97%"  />
                         <Skeleton width="97%"  />
                     </Stack>
-               
                 </div>
                 <div style={{ display: 'flex'}} className='skeleton'>
                     <Stack spacing={1} width={700}  >
@@ -29,11 +27,9 @@ class SkeletonPage extends Component {
                         <Skeleton width="97%"  />
                         <Skeleton width="97%"  />
                     </Stack>
-               
                 </div>
             </>
         );
     }
 }
-
 export default SkeletonPage;

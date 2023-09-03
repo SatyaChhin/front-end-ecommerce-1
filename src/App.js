@@ -9,6 +9,7 @@ import RouteNotFound from "./pages/route-not-found/RouteNotFound";
 import HomePage from './pages/home/HomePage';
 import Layout from "./component/layout/Layout";
 import LayoutDashboard from "./component/layout/LayoutDashboard";
+import LayoutLogin from "./component/layout/LayoutLogin";
 import PageDashboard from "./dashboard-page/dashboard/PageDashboard";
 import PageProduct from "./dashboard-page/product/PageProduct";
 import PageCategory from "./dashboard-page/category/PageCategory";
@@ -16,7 +17,7 @@ import PageOrder from "./dashboard-page/order/PageOrder";
 import PageReport from "./dashboard-page/report/PageReport";
 import PageCart from "./dashboard-page/cart/PageCart";
 import PageCustomer from "./dashboard-page/customer/PageCustomer";
-
+import PageLogin from "./pages/login/loginPage";
 
 export default function App() {
   return (
@@ -29,8 +30,10 @@ export default function App() {
                   <Route path = '/category' element = { <CategoryPage/> } />
                   <Route path = '/customer' element = { <CustomerPage/> } />
                   <Route path = '/product' element = { <ProductPage/> } />
-                  <Route path = '/dashboard' element = { <LayoutDashboard/> } />
                   <Route path = '*' element = { <RouteNotFound/> } />
+              </Route>
+              <Route path = "/" element = {<LayoutLogin/>}>
+                  <Route path = '/login' element = { <PageLogin/> } />
               </Route>
               <Route path="dashboard/" element = { <LayoutDashboard/> }>
                   <Route index element = { <PageDashboard/> } />
