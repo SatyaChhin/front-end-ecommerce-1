@@ -1,4 +1,3 @@
-
 import React , { useState , useEffect }   from 'react';
 import { Fade } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
@@ -18,7 +17,7 @@ export default function CategoryPage() {
         "https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80",
         "https://images.unsplash.com/photo-1536987333706-fc9adfb10d91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
     ];
-    const [posts, setPosts] = useState([]);
+    const [post, setPosts] = useState([]);
     const [ loading , setLoading ] = useState(true)
     useEffect(() => {
         axios.get('https://picsum.photos/v2/list')
@@ -41,11 +40,11 @@ export default function CategoryPage() {
             </Fade>
             {loading ? <SkeletonPage/> : 
             <div>
-                   <ImageList sx={{ width: 1300, height: 450 }}>
+                <ImageList sx={{ width: 1300, height: 450 }}>
                 <ImageListItem key="Subheader" cols={1}>
                     <ListSubheader component="div">December</ListSubheader>
                 </ImageListItem>
-                {posts.map((item) => (
+                {post.map((item) => (
                     <ImageListItem key={item.download_url}>
                     <img
                         src={`${item.download_url}?w=248&fit=crop&auto=format`}
