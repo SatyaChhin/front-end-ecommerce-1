@@ -10,5 +10,4 @@ class LinearIndeterminate extends Component {
         );
     }
 }
-
 export default LinearIndeterminate;

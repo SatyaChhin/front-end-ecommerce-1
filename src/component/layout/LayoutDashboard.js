@@ -1,15 +1,17 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React , { useState } from 'react';
 import { Outlet , useNavigate } from "react-router-dom"
 import {
-  DesktopOutlined,
-  FileOutlined,
+  LaptopOutlined,
   PieChartOutlined,
-  TeamOutlined,
+  UngroupOutlined,
+  ShoppingCartOutlined,
   UserOutlined,
-  ShopOutlined,
+  TrademarkOutlined,
+  DingdingOutlined,
+  DeliveredProcedureOutlined,
+  TabletOutlined
 } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Breadcrumb, Layout, Menu, theme , Tag } from 'antd';
 import Dropdown from '../dropdown/dropdown';
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -23,15 +25,29 @@ function getItem(label, key, icon, children) {
 }
 const items = [
   getItem('Dashboard', '/dashboard', <PieChartOutlined />),
-  getItem('Category', '/dashboard/category', <ShopOutlined />),
-  getItem('Product', '/dashboard/product', <DesktopOutlined />),
-  getItem('User', 'sub1', <UserOutlined />, [
-    getItem('Tom', '3'),
-    getItem('Bill', '4'),
-    getItem('Alex', '5'),
+  getItem('Employee', '/dashboard/employee', <DeliveredProcedureOutlined />),
+  getItem('Customer', '/dashboard/customer', <DingdingOutlined />),
+  getItem('Order', '/dashboard/order', <ShoppingCartOutlined />),
+  getItem('Banner', '/dashboard/banner', <TabletOutlined />),
+  getItem('Product', '/dashboard/product', <UngroupOutlined />, [
+    getItem('Category', '/dashboard/category'),
+    getItem('Product', '/dashboard/product'),
   ]),
-  getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-  getItem('Files', '9', <FileOutlined />),
+  getItem('User', '', <UserOutlined />, [
+    getItem('Role', '/dashboard/user/role'),
+    getItem('User role', '/dashboard/user/userrole'),
+  ]),
+  getItem('Report', '/dashboard/report', <TrademarkOutlined />, [
+    getItem('Top sale', '/dashboard/report/topsale'),
+    getItem('Sale summary', '/dashboard/report/salesummary'),
+    getItem('Sold by category', '/dashboard/report/soldbycategory'),
+    getItem('Sold by product', '/dashboard/report/soldbyproduct'),
+  ]),
+  getItem('System', '/dashboard/system', <LaptopOutlined />, [
+    getItem('Order Status', '/dashboard/system/orderstatus'),
+    getItem('Order Payment', '/dashboard/system/orderpayment'),
+    getItem('Province', '/dashboard/system/province'),
+  ]),
 ];
 const LayoutDashboard = () => {
   const navigate = useNavigate()
@@ -58,13 +74,15 @@ const LayoutDashboard = () => {
                 justifyContent : 'space-between',
             }}
         >
-            <div style={{fontSize : 15 , marginLeft : 5 }}> ដេប៉ូលលក់ទំនិញពៅសារ៉ាន</div>
+            <div style={{fontSize : 15 , marginLeft : 5 }}>
+              <Tag style={{padding:5,fontSize:13}} ><ShoppingCartOutlined /> Pov Saran Shopping Depot</Tag>
+            </div>
             <div style={{marginRight : 10}}>
                 <Dropdown />
             </div>
         </Header>
         <Content style={{ margin: '0 16px',}}>
-          <Breadcrumb style={{ margin: '16px 0',}}>
+          <Breadcrumb style={{ margin: '5px 0',}}>
             <Breadcrumb.Item>User</Breadcrumb.Item>
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
           </Breadcrumb>

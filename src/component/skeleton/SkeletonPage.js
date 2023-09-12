@@ -5,25 +5,79 @@ class SkeletonPage extends Component {
         return (
             <>
                 <div style={{ display: 'flex'}} className='skeleton'>
-                    <Stack spacing={1} width={700}  >
-                        <Skeleton  variant="rectangular" width={600} height={300} />
+                    <Stack spacing={2} width={900}  >
                         <Skeleton width="97%"  />
                         <Skeleton width="97%"  />
                     </Stack>
-                    <Stack spacing={1} width={700} >
-                        <Skeleton variant="rectangular" width={600} height={300} />
+                    <Stack spacing={2} width={900} >
+                        <Skeleton width="97%"  />
+                        <Skeleton width="97%"  />
+                    </Stack>
+                    <Stack spacing={2} width={900} >
+                        <Skeleton width="97%"  />
+                        <Skeleton width="97%"  />
+                    </Stack>
+                    <Stack spacing={2} width={900} >
+                        <Skeleton width="97%"  />
+                        <Skeleton width="97%"  />
+                    </Stack>
+                    <Stack spacing={2} width={900} >
+                        <Skeleton width="97%"  />
+                        <Skeleton width="97%"  />
+                    </Stack>
+                    <Stack spacing={2} width={900} >
                         <Skeleton width="97%"  />
                         <Skeleton width="97%"  />
                     </Stack>
                 </div>
                 <div style={{ display: 'flex'}} className='skeleton'>
-                    <Stack spacing={1} width={700}  >
-                        <Skeleton  variant="rectangular" width={600} height={300} />
+                    <Stack spacing={2} width={900}  >
                         <Skeleton width="97%"  />
                         <Skeleton width="97%"  />
                     </Stack>
-                    <Stack spacing={1} width={700} >
-                        <Skeleton variant="rectangular" width={600} height={300} />
+                    <Stack spacing={2} width={900} >
+                        <Skeleton width="97%"  />
+                        <Skeleton width="97%"  />
+                    </Stack>
+                    <Stack spacing={2} width={900} >
+                        <Skeleton width="97%"  />
+                        <Skeleton width="97%"  />
+                    </Stack>
+                    <Stack spacing={2} width={900} >
+                        <Skeleton width="97%"  />
+                        <Skeleton width="97%"  />
+                    </Stack>
+                    <Stack spacing={2} width={900} >
+                        <Skeleton width="97%"  />
+                        <Skeleton width="97%"  />
+                    </Stack>
+                    <Stack spacing={2} width={900} >
+                        <Skeleton width="97%"  />
+                        <Skeleton width="97%"  />
+                    </Stack>
+                </div>
+                <div style={{ display: 'flex'}} className='skeleton'>
+                    <Stack spacing={2} width={900}  >
+                        <Skeleton width="97%"  />
+                        <Skeleton width="97%"  />
+                    </Stack>
+                    <Stack spacing={2} width={900} >
+                        <Skeleton width="97%"  />
+                        <Skeleton width="97%"  />
+                    </Stack>
+                    <Stack spacing={2} width={900} >
+                        <Skeleton width="97%"  />
+                        <Skeleton width="97%"  />
+                    </Stack>
+                    <Stack spacing={2} width={900} >
+                        <Skeleton width="97%"  />
+                        <Skeleton width="97%"  />
+                    </Stack>
+                    <Stack spacing={2} width={900} >
+                        <Skeleton width="97%"  />
+                        <Skeleton width="97%"  />
+                    </Stack>
+                    <Stack spacing={2} width={900} >
                         <Skeleton width="97%"  />
                         <Skeleton width="97%"  />
                     </Stack>

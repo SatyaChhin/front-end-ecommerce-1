@@ -1,14 +1,9 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, {useEffect, useState } from 'react';
+import React, {useState} from 'react';
 import SkeletonPage from '../../component/skeleton/SkeletonPage';
 import {  Slide , Fade  } from 'react-slideshow-image';
-import axios from 'axios';
 import 'react-slideshow-image/dist/styles.css'
 import 'react-loading-skeleton/dist/skeleton.css'
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
 import LinearIndeterminate from '../../component/linear/LinearIndeterminate.js'
 import images1 from '../../assets/logo/store-card-50-homekit-202301.jpg'
 import images2 from '../../assets/logo/store-card-50-subscriptions-202108_GEO_US.jpg'

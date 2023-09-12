@@ -17,7 +17,7 @@ export default function Layout() {
             <Row>
                 <Col>
                     <nav className="Navbar">
-                    <h2>Khmer Store</h2>
+                    <h2>Pov Saran</h2>
                         <ul>
                             <li onClick = { () => clickLink('/') }>
                                 <a><BiHomeHeart /> Home</a>

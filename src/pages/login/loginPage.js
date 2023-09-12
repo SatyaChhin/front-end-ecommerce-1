@@ -7,7 +7,6 @@ const onFinish = (values) => {
   }
   request("employee/login","post",param).then(res=>{
         if(!res.error){
-            console.log(res)
             localStorage.setItem("access_token" , res.access_token)
             localStorage.setItem("refresh_token" , res.refresh_token)
             localStorage.setItem("user" , JSON.stringify(res.user))

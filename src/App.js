@@ -18,6 +18,8 @@ import PageReport from "./dashboard-page/report/PageReport";
 import PageCart from "./dashboard-page/cart/PageCart";
 import PageCustomer from "./dashboard-page/customer/PageCustomer";
 import PageLogin from "./pages/login/loginPage";
+import PageBanner from "./dashboard-page/banner/PageBanner"
+import PageEmployee from "./dashboard-page/employee/PageEmployee"
 
 export default function App() {
   return (
@@ -38,7 +40,9 @@ export default function App() {
               <Route path="dashboard/" element = { <LayoutDashboard/> }>
                   <Route index element = { <PageDashboard/> } />
                   <Route path = 'product' element = { <PageProduct/> } />
+                  <Route path = 'banner' element = { <PageBanner/> } />
                   <Route path = 'category' element = { <PageCategory/> } />
+                  <Route path = 'employee' element = { <PageEmployee/> } />
                   <Route path = 'order' element = { <PageOrder/> } />
                   <Route path = 'report' element = { <PageReport/> } />
                   <Route path = 'customer' element = { <PageCustomer/> } />

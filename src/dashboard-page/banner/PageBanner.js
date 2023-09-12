@@ -1,11 +1,10 @@
 import { useEffect,useState} from "react"
 import { Table,Modal,Form, } from "react-bootstrap"
-import { request } from '../../share/request'
+import { request , config } from '../../share/request'
 import { formatDateClient , isPersmission } from '../../share/helper'
 import { Space , Button } from "antd"
-import SkeletonPage from "../../component/skeleton/SkeletonPage"
 
-function CategoryPage(){
+function BannerPage(){
     const [show,setShow] = useState(false)
     const [showForm,setShowForm] = useState(false)
     const [list,setList] = useState([])
@@ -13,14 +12,12 @@ function CategoryPage(){
     const [name,setName] = useState("")
     const [description,setDescription] = useState("")
     const [status,setStatus] = useState("")
-    const [loading,setLoding] = useState(true)
 
     useEffect(()=>{
-       setLoding(false)
        getList();
     },[])
     const getList = () =>{
-        request("category","get").then(res=>{
+        request("banner","get").then(res=>{
             if(res){
                 setList(res.list)
             }
@@ -28,9 +25,9 @@ function CategoryPage(){
     }
     const onDelete = () => {
         setShow(false)
-        var category_id = item.category_id
-        request("category/"+category_id,"delete").then(res=>{
-            var tmp_data = list.filter((item)=>item.category_id != category_id)
+        var banner_id = item.banner_id
+        request("banner/"+banner_id,"delete").then(res=>{
+            var tmp_data = list.filter((item)=>item.banner_id != banner_id)
             setList(tmp_data)
         })
     }
@@ -56,6 +53,7 @@ function CategoryPage(){
         setDescription("")
         setStatus("")
     }
+
     const onSave = () => {
         onHideModalForm()
         var param = {
@@ -64,13 +62,13 @@ function CategoryPage(){
             "parent_id" : null,
             "status" : status
         }
-        var url = "category"
+        var url = "banner"
         var method = "post"
         // case update
         if(item != null){
-            param.category_id = item.category_id // add new key "category_id" to param
+            param.banner_id = item.banner_id // add new key "category_id" to param
             method = "PUT"
-            url = `category/${param.category_id}`
+            url = `banner/${param.banner_id}`
         }
         request(url,method,param).then(res=>{
             if(res){
@@ -94,52 +92,50 @@ function CategoryPage(){
     return(
         <div style={{padding:1}}>
             <div style={{padding:10,display:"flex",justifyContent:'space-between'}}>
-                <div>Category</div>
+                <div>Banner</div>
                 <div>
-                    <Button variant="primary" onClick={onShowModalForm}>Add Category</Button>
+                    <Button variant="primary" onClick={onShowModalForm}>Add Banner</Button>
                 </div>
             </div>
-            {loading ? <SkeletonPage/> :  
-                <>
-                    <Table striped bordered hover size='sm' responsive>
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Create</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {list?.map((item,index)=>{
-                            return (
-                                <tr key={index}>
-                                    <td>{index + 1}</td>
-                                    <td>{item.name}</td>
-                                    <td>{item.description}</td>                         
-                                    <td>{formatDateClient(item.create_at)}</td>
-                                    {/* eslint-disable-next-line eqeqeq */}
-                                    { item.status == 1 ?  <td><Button size="sm" type="primary">Enable</Button></td> : <td><Button size="sm" type="primary" danger>Disable</Button></td> }
-                                    <td>
-                                        <Space>
-                                            {<Button size="sm" disabled={!isPersmission("product.Update")}  onClick={()=>onClickEdit(item)} variant="primary" primary>Edit</Button>}
-                                            {<Button size="sm" onClick={()=>onClickBtnDelete(item)} variant="danger" danger>Delete</Button> }
-                                        </Space>
-                                    </td>
-                                </tr>
-                            )
-                            })}
-                        </tbody>
-                    </Table >
-                </>
-            }
+           <Table striped bordered hover size='sm' responsive>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Image</th>
+                    <th>Description</th>
+                    <th>Create</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {list?.map((item,index)=>{
+                    return (
+                        <tr key={index}>
+                            <td>{index + 1}</td>
+                            <td>
+                                <img style={{width:50,height:50}} src= {config.base_server +'/'+ item.image}  alt={item.image}/>
+                            </td>
+                            <td>{item.description}</td>                         
+                            <td>{formatDateClient(item.created_at)}</td>
+                            {/* eslint-disable-next-line eqeqeq */}
+                            { item.status == 1 ?  <td><Button size="sm" type="primary">Enable</Button></td> : <td><Button size="sm" type="primary" danger>Disable</Button></td> }
+                            <td>
+                                <Space>
+                                    {<Button size="sm" disabled={!isPersmission("product.Update")}  onClick={()=>onClickEdit(item)} variant="primary" primary>Edit</Button>}
+                                    {<Button size="sm" onClick={()=>onClickBtnDelete(item)} variant="danger" danger>Delete</Button> }
+                                </Space>
+                            </td>
+                        </tr>
+                    )
+                })}
+            </tbody>
+           </Table >
             <div
                 className="modal show"
                 style={{ display: 'block', position: 'initial' }}
             >
-                <Modal  show={show} onHide={onHideModal}>
+                <Modal show={show} onHide={onHideModal}>
                     <Modal.Header closeButton>
                         <Modal.Title>Delete</Modal.Title>
                     </Modal.Header>
@@ -157,9 +153,9 @@ function CategoryPage(){
                 className="modal show"
                 style={{ display: 'block', position: 'initial' }}
             >
-                <Modal  size="lg" show={showForm} onHide={onHideModalForm}>
+                <Modal show={showForm} onHide={onHideModalForm}>
                     <Modal.Header closeButton>
-                        <Modal.Title>{item?.category_id == null ? "Create" : "Update"}</Modal.Title>
+                        <Modal.Title>{item?.banner_id == null ? "Create" : "Update"}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <Form>
@@ -202,7 +198,7 @@ function CategoryPage(){
                     <Modal.Footer>
                         <Button variant="secondary" onClick={onHideModalForm}>Cancel</Button>
                         <Button variant="secondary" onClick={clearForm}>Clear</Button>
-                        <Button variant="primary" onClick={onSave}>{(item?.category_id == null) ? "Save" : "Update"}</Button>
+                        <Button variant="primary" onClick={onSave}>{(item?.banner_id == null) ? "Save" : "Update"}</Button>
                     </Modal.Footer>
                 </Modal>
             </div>
@@ -210,4 +206,4 @@ function CategoryPage(){
     )
 }
 
-export default CategoryPage;
+export default BannerPage;
