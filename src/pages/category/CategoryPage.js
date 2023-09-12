@@ -48,7 +48,7 @@ export default function CategoryPage() {
                     <ImageListItem key={item.download_url}>
                     <img
                         src={`${item.download_url}?w=248&fit=crop&auto=format`}
-                        srcSet={`${item.idownload_urlmg}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                        srcSet={`${item.download_url}?w=248&fit=crop&auto=format&dpr=2 2x`}
                         alt={item.title}
                         loading="lazy"
                     />
